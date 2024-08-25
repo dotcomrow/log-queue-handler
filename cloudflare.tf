@@ -1,3 +1,8 @@
+resource "cloudflare_queue" "log_queue" {
+  account_id = var.cloudflare_account_id
+  name       = "log_queue"
+}
+
 resource "cloudflare_workers_domain" "project_domain" {
   account_id = var.cloudflare_account_id
   hostname   = "${var.project_name}.${var.environment}.${var.domain}"
@@ -71,6 +76,11 @@ resource "cloudflare_workers_script" "project_script" {
   service_binding {
     name = "GRAPHQL"
     service = "pulse-graphql-${var.environment}"
+  }
+
+  queue_binding {
+    name = "LOG_QUEUE"
+    queue = cloudflare_queue.log_queue.id
   }
 
   secret_text_binding {
