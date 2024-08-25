@@ -1,6 +1,6 @@
 resource "cloudflare_queue" "log_queue" {
   account_id = var.cloudflare_account_id
-  name       = "log_queue"
+  name       = "log-queue"
 }
 
 resource "cloudflare_workers_domain" "project_domain" {
