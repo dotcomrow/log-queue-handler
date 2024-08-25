@@ -79,7 +79,7 @@ resource "cloudflare_workers_script" "project_script" {
   }
 
   queue_binding {
-    name = "LOG_QUEUE"
+    binding = "LOG_QUEUE"
     queue = cloudflare_queue.log_queue.id
   }
 
