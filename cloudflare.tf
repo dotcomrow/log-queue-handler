@@ -97,4 +97,6 @@ resource "cloudflare_workers_script" "project_script" {
     name = "GLOBAL_SHARED_SECRET"
     text = var.GLOBAL_SHARED_SECRET
   }
+
+  depends_on = [ cloudflare_queue.log_queue ]
 }
