@@ -80,7 +80,7 @@ resource "cloudflare_workers_script" "project_script" {
 
   queue_binding {
     binding = "LOG_QUEUE"
-    queue = cloudflare_queue.log_queue.id
+    queue = cloudflare_queue.log_queue.name
   }
 
   secret_text_binding {
